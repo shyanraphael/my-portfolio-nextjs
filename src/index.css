@@ -1,0 +1,240 @@
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600&display=swap');
+
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* ─── CSS Variables ─── */
+:root {
+  --bg: #f5f3ef;
+  --surface: #ffffff;
+  --surface-2: #eeebe4;
+  --text: #111111;
+  --text-muted: #666666;
+  --accent: #7c3aed;
+  --accent-2: #a78bfa;
+  --border: rgba(0, 0, 0, 0.08);
+  --cursor-color: #7c3aed;
+  --scrollbar-thumb: #7c3aed;
+  --scrollbar-track: #eeebe4;
+  --shadow: rgba(0, 0, 0, 0.08);
+  --grid-color: rgba(0, 0, 0, 0.04);
+}
+[data-theme='dark'] {
+  --bg: #080808;
+  --surface: #111111;
+  --surface-2: #1a1a1a;
+  --text: #f0f0f0;
+  --text-muted: #888888;
+  --accent: #a78bfa;
+  --accent-2: #7c3aed;
+  --border: rgba(255, 255, 255, 0.08);
+  --cursor-color: #a78bfa;
+  --scrollbar-thumb: #a78bfa;
+  --scrollbar-track: #1a1a1a;
+  --shadow: rgba(0, 0, 0, 0.4);
+  --grid-color: rgba(255, 255, 255, 0.03);
+}
+/* ─── Base ─── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+html {
+  scroll-behavior: auto; /* Lenis handles this */
+}
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+  cursor: none;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+/* ─── Custom Scrollbar ─── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+  transition: background 0.4s ease;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 999px;
+  transition: background 0.4s ease;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-2);
+}
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb) var(--scrollbar-track);
+}
+/* ─── Custom Cursor ─── */
+.cursor-outer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  border: 2px solid var(--cursor-color);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  transition: border-color 0.3s ease, transform 0.1s ease;
+  mix-blend-mode: normal;
+}
+.cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 8px;
+  height: 8px;
+  background: var(--cursor-color);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 100000;
+  transform: translate(-50%, -50%);
+  transition: background-color 0.3s ease, opacity 0.2s ease, transform 0.1s ease;
+}
+.cursor-outer.hovering {
+  transform: translate(-50%, -50%) scale(2);
+  background: rgba(167, 139, 250, 0.1);
+}
+.cursor-dot.hovering {
+  opacity: 0;
+}
+/* ─── Typography ─── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Syne', sans-serif;
+  color: var(--text);
+}
+p, span, a, li, button, input, textarea {
+  font-family: 'Inter', sans-serif;
+}
+/* ─── Section Base ─── */
+section {
+  position: relative;
+  overflow: hidden;
+}
+/* ─── Grid Background ─── */
+.grid-bg {
+  background-image:
+    linear-gradient(var(--grid-color) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-color) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+/* ─── Clip Reveal ─── */
+.clip-reveal {
+  overflow: hidden;
+}
+/* ─── Noise Texture Overlay ─── */
+.noise::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  opacity: 0.04;
+}
+/* ─── Glassmorphism ─── */
+.glass {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border);
+}
+[data-theme='dark'] .glass {
+  background: rgba(255, 255, 255, 0.04);
+}
+/* ─── Accent Glow ─── */
+.accent-glow {
+  box-shadow: 0 0 20px rgba(167, 139, 250, 0.3);
+}
+/* ─── Lenis ─── */
+html.lenis {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+/* ─── Overflow hidden for text reveals ─── */
+.overflow-clip {
+  overflow: hidden;
+  display: block;
+}
+/* ─── Project card ─── */
+.project-image-wrap {
+  overflow: hidden;
+  border-radius: 12px;
+}
+.project-image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.project-image-wrap:hover img {
+  transform: scale(1.05);
+}
+/* ─── Scrollbar color transition ─── */
+body {
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+/* ─── Selection ─── */
+::selection {
+  background: var(--accent);
+  color: #fff;
+}
+/* ─── Focus visible ─── */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+/* ─── Smooth transitions for theme ─── */
+*, *::before, *::after {
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+/* ─── Geometric shape animations ─── */
+.shape {
+  position: absolute;
+  pointer-events: none;
+  will-change: transform;
+}
+/* ─── Large faded section numbers ─── */
+.section-num {
+  font-family: 'Syne', sans-serif;
+  font-size: clamp(80px, 15vw, 180px);
+  font-weight: 800;
+  color: var(--text);
+  opacity: 0.04;
+  line-height: 1;
+  user-select: none;
+  pointer-events: none;
+}
+/* ─── Pill tags ─── */
+.lang-tag {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 500;
+  font-family: 'Inter', sans-serif;
+  background: var(--surface-2);
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  transition: background 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+.lang-tag:hover {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
