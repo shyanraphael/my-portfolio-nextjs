@@ -12,61 +12,64 @@ interface Project {
   image: string;
   langs: string[];
   desc: string;
+  proLink: string,
 }
 const PROJECTS: Project[] = [
 {
-  num: '01',
-  title: 'Portfolio Website - NextJS',
-  image: portNext,
-  langs: ['React', 'Next.js', 'Gsap', 'Lenis', 'Typescript'],
-  desc: 'Portfolio website to showcase my web-development skills in React and Next.js.',
+    num: '01',
+    title: 'Portfolio Website - NextJS',
+    image: portNext,
+    langs: ['React', 'Next.js', 'Gsap', 'Lenis', 'Typescript'],
+    desc: 'Portfolio website to showcase my web-development skills in React and Next.js.',
+    proLink:'https://github.com/shyanraphael/my-portfolio-nextjs',
 },
 {
-  num: '02',
-  title: 'Portfolio Website - HTML',
-  image: portHTML,
-  langs: ['HTML', 'CSS', 'Javascript', 'Gsap', 'Lenis'],
-  desc: 'Portfolio website to showcase my web-development skills in HTML and CSS'
+    num: '02',
+    title: 'Portfolio Website - HTML',
+    image: portHTML,
+    langs: ['HTML', 'CSS', 'Javascript', 'Gsap', 'Lenis'],
+    desc: 'Portfolio website to showcase my web-development skills in HTML and CSS',
+    proLink:'https://github.com/shyanraphael/my-portfolio',
 },
 {
-  num: '03',
-  title: 'Sri Maps',
-  image:
-  'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=600&q=80',
-  langs: ['Next.js', 'Tailwind', 'Typescript', 'Vite', 'Gsap'],
-  desc: 'Real-time live bus location tracking application providing the ability to switch between languages Sinhalese, English and Tamil'
+    num: '03',
+    title: 'Sri Maps',
+     image: srimapsFinal,
+    langs: ['Next.js', 'Tailwind', 'Typescript', 'Vite', 'Gsap'],
+    desc: 'Real-time live bus location tracking application providing the ability to switch between languages Sinhalese, English and Tamil',
+    proLink:'https://github.com/srimaps/srimaps-final',
 },
 {
-  num: '04',
-  title: 'Sri Maps - Marketing Page',
-  image:
-  'https://images.unsplash.com/photo-1611224923853-80b023f02d71?w=600&q=80',
-  langs: ['Next.js', 'Tailwind', 'Typescript', 'Vite', 'Gsap'],
-  desc: 'Marketing website for the official Sri Maps website with no language barrier giving the opportunity to switch between Sinhalese, English and Tamil'
+    num: '04',
+    title: 'Sri Maps - Marketing Page',
+    image:srimapsMarket,
+    langs: ['Next.js', 'Tailwind', 'Typescript', 'Vite', 'Gsap'],
+    desc: 'Marketing website for the official Sri Maps website with no language barrier giving the opportunity to switch between Sinhalese, English and Tamil',
+    proLink:'https://github.com/shyanraphael/srimaps-landingPage',
 },
 {
-  num: '05',
-  title: 'Merchy - Next.js',
-  image:
-  'https://images.unsplash.com/photo-1504608524841-42584120d693?w=600&q=80',
-  langs: ['HTML', 'CSS', 'Javascript', 'Gsap', 'Lenis'],
-  desc: 'Clothing website for women made using HTML and CSS'
+    num: '05',
+    title: 'Merchy - Next.js',
+    image:merchyNext,
+    langs: ['HTML', 'CSS', 'Javascript', 'Gsap', 'Lenis'],
+    desc: 'Clothing website for women made using HTML and CSS',
+    proLink:'',
 },
 {
-  num: '06',
-  title: 'Merchy - HTML',
-  image:
-  'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=600&q=80',
-  langs: ['Next.js', 'Tailwind', 'Typescript', 'Vite', 'Gsap', 'Lenis'],
-  desc: 'Clothing website for women made using a girlish theme'
+    num: '06',
+    title: 'Merchy - HTML',
+    image:merchyHTML,
+    langs: ['Next.js', 'Tailwind', 'Typescript', 'Vite', 'Gsap', 'Lenis'],
+    desc: 'Clothing website for women made using a girlish theme',
+    proLink:'https://github.com/shyanraphael/merchy-frontend',
 },
 {
-  num: '07',
-  title: 'Sri Maps - Prototype',
-  image:
-  'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=600&q=80',
-  langs: ['Figma'],
-  desc: 'Prototype application made for Sri Maps website'
+    num: '07',
+    title: 'Sri Maps - Prototype',
+    image: sriPro,
+    langs: ['Figma'],
+    desc: 'Prototype application made for Sri Maps website',
+    proLink:'https://www.figma.com/design/Dc4ZgxqcsEIjC68d4a7VWs/SriMaps-Prototype?t=fSZxpRsI56ef0O00-0',
 },
 {
     num: '08',
@@ -74,7 +77,8 @@ const PROJECTS: Project[] = [
     image:
         'https://images.unsplash.com/photo-1639762681485-074b7f938ba0?w=600&q=80',
     langs: ['Next.js', 'CSS', 'Typescript'],
-    desc: 'Inventory Management System website with functioning login/sign-up page'
+    desc: 'Inventory Management System website with functioning login/sign-up page',
+    proLink:'https://github.com/shyanraphael/inventory-app',
 }];
 
 function ProjectCard({ project, index }: {project: Project;index: number;}) {
@@ -331,7 +335,7 @@ function ProjectCard({ project, index }: {project: Project;index: number;}) {
 
             {/* View link */}
             <a
-              href="#"
+              href={project.proLink}
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
